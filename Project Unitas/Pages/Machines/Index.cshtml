@@ -1,0 +1,57 @@
+@page
+@model Project_Unitas.Pages.Machines.IndexModel
+@{
+    ViewData["Title"] = "Machines";
+}
+
+<div class="page-header">
+    <h1 class="tab-title">Machines</h1>
+</div>
+
+<p class="page-intro">
+    Bakkerijmachines uit eigen productie: van deegbereiding tot afwerking.
+    Alle prijzen zijn exclusief btw.
+</p>
+
+<nav aria-label="Filter op categorie">
+    <ul class="chips">
+        <li>
+            <a class="chip" asp-page="/Machines/Index" asp-route-zoek="@Model.Query"
+               aria-current="@(string.IsNullOrEmpty(Model.Category) ? "page" : null)">Alle</a>
+        </li>
+        @foreach (var category in Model.Categories)
+        {
+            <li>
+                <a class="chip" asp-page="/Machines/Index" asp-route-categorie="@category" asp-route-zoek="@Model.Query"
+                   aria-current="@(string.Equals(category, Model.Category, StringComparison.OrdinalIgnoreCase) ? "page" : null)">@category</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+@if (!string.IsNullOrWhiteSpace(Model.Query))
+{
+    <p>
+        @Model.Machines.Count @(Model.Machines.Count == 1 ? "resultaat" : "resultaten") voor <strong>“@Model.Query”</strong>.
+        <a class="link" asp-page="/Machines/Index" asp-route-categorie="@Model.Category">Zoekopdracht wissen</a>
+    </p>
+}
+
+@if (Model.Machines.Count == 0)
+{
+    <div class="card empty-state">
+        <p>Er zijn geen machines gevonden.</p>
+        <a class="button button--dark" asp-page="/Machines/Index">Alle machines bekijken</a>
+    </div>
+}
+else
+{
+    <ul class="product-grid">
+        @foreach (var machine in Model.Machines)
+        {
+            <li>
+                <partial name="_MachineCard" model="machine" />
+            </li>
+        }
+    </ul>
+}

@@ -1,0 +1,19 @@
+@model Machine
+
+<article class="product-card">
+    <div class="product-card__image img-placeholder" role="img" aria-label="Afbeelding volgt"></div>
+    <div class="product-card__body">
+        <span class="product-card__category">@Model.Category</span>
+        <h2 class="product-card__name">
+            <a asp-page="/Machines/Details" asp-route-id="@Model.Id">@Model.Name</a>
+        </h2>
+        <p class="product-card__summary">@Model.Summary</p>
+        <div class="product-card__footer">
+            <span class="price">@Format.Price(Model.Price)</span>
+            <form method="post" asp-page="/Cart" asp-page-handler="Add">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <button class="button" type="submit" aria-label="@Model.Name in winkelwagen">In winkelwagen</button>
+            </form>
+        </div>
+    </div>
+</article>

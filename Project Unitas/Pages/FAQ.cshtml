@@ -1,0 +1,32 @@
+@page
+@model FAQModel
+@{
+    ViewData["Title"] = "Veelgestelde vragen";
+}
+
+<div class="page-header">
+    <h1 class="tab-title">Veelgestelde vragen</h1>
+</div>
+
+<div class="stack">
+    @foreach (var group in Model.Groups)
+    {
+        <section aria-label="@group.Title">
+            <h2 class="section-heading">@group.Title</h2>
+            <div class="faq">
+                @foreach (var item in group.Items)
+                {
+                    <details>
+                        <summary>@item.Question</summary>
+                        <p>@item.Answer</p>
+                    </details>
+                }
+            </div>
+        </section>
+    }
+
+    <div class="panel panel--dark empty-state">
+        <p>Staat uw vraag er niet tussen?</p>
+        <a class="button" asp-page="/Contact">Neem contact op</a>
+    </div>
+</div>

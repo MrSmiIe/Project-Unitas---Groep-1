@@ -1,10 +1,84 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@* ---------- Carousel ---------- *@
+<section class="carousel panel panel--dark" aria-labelledby="carousel-title" data-carousel>
+    <h1 class="tab-title carousel__title" id="carousel-title">Uitgelichte machines</h1>
+
+    <div class="carousel__body">
+        <button class="carousel__arrow carousel__arrow--prev" type="button" data-carousel-prev aria-label="Vorige">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+
+        <ul class="carousel__track" data-carousel-track tabindex="0" aria-label="Machines">
+            @foreach (var machine in Model.FeaturedMachines)
+            {
+                <li class="carousel__slide">
+                    <a class="carousel__tile img-placeholder" asp-page="/Machines/Details" asp-route-id="@machine.Id">
+                        <span class="carousel__caption">@machine.Name</span>
+                    </a>
+                </li>
+            }
+        </ul>
+
+        <button class="carousel__arrow carousel__arrow--next" type="button" data-carousel-next aria-label="Volgende">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
+    </div>
+
+    <div class="carousel__progress" aria-hidden="true">
+        <div class="carousel__thumb" data-carousel-thumb></div>
+    </div>
+</section>
+
+@* ---------- Live server status ---------- *@
+<section class="status panel panel--caramel" aria-labelledby="status-title">
+    <h2 class="status__title" id="status-title">Live server status</h2>
+
+    <ul class="status__summary">
+        <li class="status__stat status__stat--online">
+            <span class="status__stat-value">@Model.CountByState(ServerState.Online)/@Model.Servers.Count</span>
+            <span class="status__stat-label">Online</span>
+        </li>
+        <li class="status__stat status__stat--offline">
+            <span class="status__stat-value">@Model.CountByState(ServerState.Offline)</span>
+            <span class="status__stat-label">Offline</span>
+        </li>
+        <li class="status__stat status__stat--onderhoud">
+            <span class="status__stat-value">@Model.CountByState(ServerState.Onderhoud)</span>
+            <span class="status__stat-label">Onderhoud</span>
+        </li>
+        <li class="status__stat">
+            <span class="status__stat-value">@(Model.AveragePingMs is int avg ? $"{avg} ms" : "–")</span>
+            <span class="status__stat-label">Gem. ping</span>
+        </li>
+    </ul>
+
+    <table class="status__table">
+        <thead>
+            <tr>
+                <th scope="col"><span class="visually-hidden">Indicator</span></th>
+                <th scope="col">Server</th>
+                <th scope="col" class="status__head-state">Status</th>
+                <th scope="col" class="status__head-ping">Ping</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var server in Model.Servers)
+            {
+                var modifier = server.State.ToString().ToLowerInvariant();
+                <tr>
+                    <td class="status__dot-cell">
+                        <span class="status__dot status__dot--@modifier" aria-hidden="true"></span>
+                    </td>
+                    <th class="status__name" scope="row">@server.Name</th>
+                    <td class="status__state">@server.State</td>
+                    <td class="status__ping">@(server.PingMs is int ms ? $"{ms} ms" : "–")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

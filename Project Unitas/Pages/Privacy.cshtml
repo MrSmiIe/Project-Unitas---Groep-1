@@ -1,8 +1,30 @@
 ﻿@page
 @model PrivacyModel
 @{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Privacy";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="page-header">
+    <h1 class="tab-title">Privacy</h1>
+</div>
+
+@* TODO: have the full privacy statement written/checked before going live. *@
+<div class="card">
+    <h2 class="section-heading">Welke gegevens bewaren we?</h2>
+    <ul>
+        <li>
+            <strong>Winkelwagen:</strong> we gebruiken één functionele cookie (<code>.Unitas.Session</code>)
+            om uw winkelwagen te onthouden. Deze cookie verloopt na 30 minuten zonder activiteit
+            en wordt niet gebruikt om u te volgen.
+        </li>
+        <li>
+            <strong>Contactformulier:</strong> uw naam, e-mailadres en bericht gebruiken we alleen
+            om uw vraag te beantwoorden.
+        </li>
+        <li>
+            <strong>Klantaccount:</strong> uw wachtwoord wordt nooit leesbaar opgeslagen, en inloggen
+            is beveiligd met tweestapsverificatie (MFA).
+        </li>
+    </ul>
+    <p>Vragen over uw gegevens? <a class="link" asp-page="/Contact">Neem contact met ons op</a>.</p>
+</div>

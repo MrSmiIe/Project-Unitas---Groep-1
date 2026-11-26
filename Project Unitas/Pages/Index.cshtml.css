@@ -1,0 +1,283 @@
+/* Scoped styles for the homepage. */
+
+section + section {
+    margin-top: clamp(2rem, 6vw, 4rem);
+}
+
+/* --------------------------------------------------------------- Carousel */
+
+.carousel {
+    position: relative;
+    padding-top: 0;
+    text-align: center;
+}
+
+/* Title sits as a tab on the top edge of the panel */
+.carousel__title {
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    min-width: min(16rem, 80%);
+    margin-bottom: 1.25rem;
+}
+
+.carousel__body {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.carousel__arrow {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--cream);
+    cursor: pointer;
+}
+
+.carousel__arrow:hover:not(:disabled) {
+    background: var(--brown);
+}
+
+.carousel__arrow:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.carousel__arrow svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.carousel__track {
+    flex: 1;
+    min-width: 0;
+    display: grid;
+    grid-auto-flow: column;
+    /* 4 tiles visible on desktop, fewer on smaller screens */
+    grid-auto-columns: calc((100% - 3 * var(--tile-gap)) / 4);
+    --tile-gap: clamp(0.5rem, 2vw, 1.25rem);
+    gap: var(--tile-gap);
+    margin: 0;
+    padding: 0.25rem;
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.carousel__track::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel__slide {
+    scroll-snap-align: start;
+}
+
+.carousel__tile {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 1;
+    transition: transform 0.15s ease;
+}
+
+.carousel__caption {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 0.35rem 0.4rem;
+    background: rgb(62 22 19 / 0.85);
+    color: var(--cream);
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-decoration: none;
+}
+
+.carousel__tile:hover {
+    transform: translateY(-3px);
+}
+
+.carousel__progress {
+    height: 0.6rem;
+    margin: 1.25rem 3rem 0;
+    border-radius: 999px;
+    background: var(--caramel);
+    overflow: hidden;
+}
+
+.carousel__thumb {
+    height: 100%;
+    width: 25%;
+    border-radius: 999px;
+    background: var(--cream);
+    transition: transform 0.1s linear;
+}
+
+@media (max-width: 48rem) {
+    .carousel__track {
+        grid-auto-columns: calc((100% - 2 * var(--tile-gap)) / 3);
+    }
+}
+
+@media (max-width: 30rem) {
+    .carousel__track {
+        grid-auto-columns: calc((100% - var(--tile-gap)) / 2);
+    }
+
+    .carousel__progress {
+        margin-inline: 0;
+    }
+}
+
+/* ---------------------------------------------------- Live server status */
+
+/* Same width as the carousel; summary tiles on top, table below */
+
+/* Title with a dark bar on either side */
+.status__title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.status__title::before,
+.status__title::after {
+    content: "";
+    flex: 1;
+    height: 0.6rem;
+    border-radius: 999px;
+    background: var(--chocolate);
+}
+
+.status__summary {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+.status__stat {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius-sm);
+    border-top: 6px solid var(--brown);
+    background: var(--chocolate);
+    color: var(--cream);
+    text-align: center;
+}
+
+.status__stat--online { border-top-color: var(--status-online); }
+.status__stat--offline { border-top-color: var(--status-offline); }
+.status__stat--onderhoud { border-top-color: var(--status-warning); }
+
+.status__stat-value {
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.status__stat-label {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+.status__table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.75rem;
+}
+
+.status__table thead th {
+    padding-bottom: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.status__table .status__head-state {
+    text-align: center;
+}
+
+.status__table .status__head-ping {
+    text-align: right;
+}
+
+.status__table td,
+.status__table th {
+    padding: 0.5rem 0.9rem;
+    text-align: left;
+    font-weight: 500;
+}
+
+.status__dot-cell {
+    width: 1%;
+}
+
+.status__dot {
+    display: block;
+    width: 2rem;
+    height: 1.4rem;
+    border: 4px solid var(--brown);
+    border-radius: var(--radius-sm);
+    box-sizing: content-box;
+}
+
+.status__dot--online { background: var(--status-online); }
+.status__dot--offline { background: var(--status-offline); }
+.status__dot--onderhoud { background: var(--status-warning); }
+
+.status__name,
+.status__ping {
+    background: var(--cream);
+}
+
+.status__name {
+    width: 55%;
+}
+
+.status__state {
+    background: var(--brown);
+    color: var(--cream);
+    text-align: center !important;
+    border-left: 0.75rem solid var(--caramel);
+    border-right: 0.75rem solid var(--caramel);
+}
+
+.status__ping {
+    text-align: right !important;
+    white-space: nowrap;
+}
+
+@media (max-width: 40rem) {
+    .status__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 30rem) {
+    .status__table td,
+    .status__table th {
+        padding: 0.4rem 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .status__state {
+        border-width: 0 0.35rem;
+    }
+}

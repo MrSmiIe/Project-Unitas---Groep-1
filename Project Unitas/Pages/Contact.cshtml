@@ -1,0 +1,79 @@
+@page
+@model ContactModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="page-header">
+    <h1 class="tab-title">Contact</h1>
+</div>
+
+<p class="page-intro">
+    Heeft u een vraag, wilt u een offerte of is er een storing? Laat het ons weten.
+</p>
+
+<div class="split">
+    <section class="card" aria-labelledby="form-title">
+        <h2 class="section-heading" id="form-title">Stuur ons een bericht</h2>
+
+        <form class="form" method="post">
+            <div asp-validation-summary="ModelOnly" class="field-error"></div>
+
+            <div class="field">
+                <label asp-for="Input.Name"></label>
+                <input asp-for="Input.Name" autocomplete="name" />
+                <span asp-validation-for="Input.Name" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Company"></label>
+                <input asp-for="Input.Company" autocomplete="organization" />
+                <span asp-validation-for="Input.Company" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" autocomplete="email" />
+                <span asp-validation-for="Input.Email" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Subject"></label>
+                <select asp-for="Input.Subject" asp-items="@(new SelectList(ContactModel.Subjects))">
+                    <option value="">Kies een onderwerp…</option>
+                </select>
+                <span asp-validation-for="Input.Subject" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Message"></label>
+                <textarea asp-for="Input.Message"></textarea>
+                <span asp-validation-for="Input.Message" class="field-error"></span>
+            </div>
+
+            <div>
+                <button class="button button--dark" type="submit">Versturen</button>
+            </div>
+        </form>
+    </section>
+
+    <aside class="stack">
+        <section class="panel panel--dark" aria-labelledby="service-title">
+            <h2 class="section-heading" id="service-title">Storing aan uw machine?</h2>
+            <p>
+                Kies bij het onderwerp <strong>“Storing of onderhoud”</strong>. Onze technische
+                buitendienst neemt dan zo snel mogelijk contact met u op.
+            </p>
+        </section>
+
+        <section class="card" aria-labelledby="faq-title">
+            <h2 class="section-heading" id="faq-title">Snel antwoord?</h2>
+            <p>Veel vragen over bestellen, levering en uw account staan al beantwoord in onze FAQ.</p>
+            <a class="button button--dark" asp-page="/FAQ">Naar de FAQ</a>
+        </section>
+    </aside>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

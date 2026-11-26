@@ -1,38 +1,121 @@
-﻿
+﻿@inject CartService Cart
+@{
+    var cartCount = Cart.Count;
+}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Unitas</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Project_Unitas.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Project Unitas.styles.css" asp-append-version="true" />
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a asp-area="" asp-page="/Index">Unitas</a>
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="brand" asp-area="" asp-page="/Index">
+                <span class="brand__mark" aria-hidden="true">U</span>
+                <span class="brand__name">Unitas</span>
+            </a>
 
-            <div>
-                <a asp-area="" asp-page="/Index">Home</a>
-                <a asp-area="" asp-page="/Machines">Machines</a>
-                <a asp-area="" asp-page="/About">About us</a>
-                <a asp-area="" asp-page="/Contact">Contact</a>
-            </div>
+            <nav class="main-nav" aria-label="Hoofdmenu">
+                <ul class="main-nav__list">
+                    <li class="main-nav__item" data-dropdown>
+                        <button class="main-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-start">
+                            Start
+                            <svg class="chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" /></svg>
+                        </button>
+                        <ul class="dropdown" id="menu-start">
+                            <li><a asp-area="" asp-page="/Index">Home</a></li>
+                            <li><a asp-area="" asp-page="/FAQ">FAQ</a></li>
+                        </ul>
+                    </li>
+                    <li class="main-nav__item" data-dropdown>
+                        <button class="main-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-shop">
+                            Shop
+                            <svg class="chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" /></svg>
+                        </button>
+                        <ul class="dropdown" id="menu-shop">
+                            <li><a asp-area="" asp-page="/Machines/Index">Machines</a></li>
+                            <li><a asp-area="" asp-page="/Cart">Winkelwagen</a></li>
+                        </ul>
+                    </li>
+                    <li class="main-nav__item" data-dropdown>
+                        <button class="main-nav__toggle" type="button" aria-expanded="false" aria-controls="menu-contact">
+                            Contact
+                            <svg class="chevron" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" /></svg>
+                        </button>
+                        <ul class="dropdown" id="menu-contact">
+                            <li><a asp-area="" asp-page="/Contact">Contact</a></li>
+                            <li><a asp-area="" asp-page="/Account/Login">Mijn account</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
 
-            <div>
-                <a asp-area="" asp-page="/FAQ">FAQ</a>
-                <a asp-area="" asp-page="/Cart">Shopping cart</a>
-                <a asp-area="" asp-page="/Account/Login">My account</a>
+            <div class="header-actions">
+                <form class="search" role="search" method="get" asp-page="/Machines/Index">
+                    <label class="search__icon" for="site-search">
+                        <span class="visually-hidden">Zoeken</span>
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="M15.5 15.5L21 21" /></svg>
+                    </label>
+                    <input class="search__input" id="site-search" type="search" name="zoek" placeholder="Zoek een machine…" autocomplete="off" value="@Context.Request.Query["zoek"]" />
+                </form>
+
+                <a class="icon-link cart-link" asp-area="" asp-page="/Cart">
+                    <span class="visually-hidden">Winkelwagen, @cartCount @(cartCount == 1 ? "artikel" : "artikelen")</span>
+                    @if (cartCount > 0)
+                    {
+                        <span class="cart-link__badge" aria-hidden="true">@(cartCount > 99 ? "99+" : cartCount)</span>
+                    }
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h3l2.4 11.2a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 7H6" /><circle cx="9" cy="19.5" r="1.5" /><circle cx="18" cy="19.5" r="1.5" /></svg>
+                </a>
             </div>
-        </nav>
+        </div>
     </header>
 
     <main>
+        <partial name="_StatusMessage" />
         @RenderBody()
     </main>
 
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <a class="brand brand--footer" asp-area="" asp-page="/Index">
+                <span class="brand__mark" aria-hidden="true">U</span>
+                <span class="brand__name">Unitas</span>
+            </a>
+
+            <nav class="footer-nav" aria-label="Footer">
+                <div class="footer-nav__col">
+                    <h2>Klantenservice</h2>
+                    <ul>
+                        <li><a asp-area="" asp-page="/Contact">Contact</a></li>
+                        <li><a asp-area="" asp-page="/Account/Login">Mijn account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav__col">
+                    <h2>Shop</h2>
+                    <ul>
+                        <li><a asp-area="" asp-page="/Machines/Index">Machines</a></li>
+                        <li><a asp-area="" asp-page="/Cart">Winkelwagen</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav__col">
+                    <h2>Help</h2>
+                    <ul>
+                        <li><a asp-area="" asp-page="/FAQ">FAQ</a></li>
+                        <li><a asp-area="" asp-page="/Privacy">Privacy</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <p class="site-footer__legal">&copy; @DateTime.Now.Year Unitas</p>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>

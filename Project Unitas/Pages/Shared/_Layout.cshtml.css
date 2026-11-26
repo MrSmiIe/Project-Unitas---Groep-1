@@ -1,48 +1,318 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
+﻿/* Scoped styles for the shared layout: header, main navigation and footer. */
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+/* ---------------------------------------------------------------- Header */
+
+.site-header {
+    background: var(--chocolate);
+    color: var(--cream);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-a {
-  color: #0077cc;
+.site-header__inner {
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding: 0.75rem var(--gutter);
+    display: flex;
+    align-items: center;
+    gap: 1rem 2rem;
+    flex-wrap: wrap;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+/* Logo placeholder until the real logo exists */
+.brand {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    color: var(--cream);
+    text-decoration: none;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.brand__mark {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px solid var(--copper);
+    border-radius: var(--radius-sm);
+    background: var(--brown);
+    font-weight: 700;
+    font-size: 1.25rem;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.brand__name {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+/* ---------------------------------------------------------- Main nav */
+
+.main-nav {
+    flex: 1;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+.main-nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: clamp(0.75rem, 4vw, 3rem);
+}
+
+.main-nav__item {
+    position: relative;
+}
+
+.main-nav__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.25rem;
+    border: 0;
+    border-bottom: 2px solid var(--copper);
+    background: none;
+    color: var(--cream);
+    font: inherit;
+    font-weight: 600;
+    min-width: 6rem;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.chevron {
+    width: 0.75rem;
+    height: 0.75rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.15s ease;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 11rem;
+    margin: 0;
+    padding: 0.4rem;
+    list-style: none;
+    background: var(--brown);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 0.25);
+    display: none;
+}
+
+.dropdown a {
+    display: block;
+    padding: 0.45rem 0.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--cream);
+    text-decoration: none;
+}
+
+.dropdown a:hover,
+.dropdown a:focus-visible {
+    background: var(--chocolate);
+}
+
+/* Open on click/tap (site.js toggles .is-open) and on hover for mouse users */
+.main-nav__item.is-open .dropdown {
+    display: block;
+}
+
+.main-nav__item.is-open .chevron {
+    transform: rotate(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .main-nav__item:hover .dropdown {
+        display: block;
+    }
+
+    .main-nav__item:hover .chevron {
+        transform: rotate(180deg);
+    }
+}
+
+/* ------------------------------------------------------ Header actions */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    border-radius: 999px;
+    transition: background 0.15s ease;
+}
+
+.search__icon,
+.icon-link {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: var(--cream);
+    cursor: pointer;
+}
+
+.search__icon svg,
+.icon-link svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cart-link {
+    position: relative;
+}
+
+.cart-link__badge {
+    position: absolute;
+    top: 0;
+    right: -0.1rem;
+    min-width: 1.15rem;
+    height: 1.15rem;
+    padding: 0 0.25rem;
+    border-radius: 999px;
+    background: var(--cream);
+    color: var(--chocolate);
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.15rem;
+    text-align: center;
+}
+
+/* The search field stays collapsed behind the icon until it gets focus */
+.search__input {
+    width: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--cream);
+    font: inherit;
+    transition: width 0.2s ease, padding 0.2s ease;
+}
+
+.search__input::placeholder {
+    color: rgb(241 216 184 / 0.7);
+}
+
+.search:focus-within {
+    background: var(--brown);
+}
+
+.search:focus-within .search__input {
+    width: 12rem;
+    padding-right: 0.9rem;
+    outline: none;
+}
+
+/* ---------------------------------------------------------------- Footer */
+
+.site-footer {
+    background: var(--chocolate);
+    color: var(--cream);
+}
+
+.site-footer__inner {
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding: 2rem var(--gutter) 1.25rem;
+    display: flex;
+    gap: 2rem clamp(2rem, 8vw, 6rem);
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.brand--footer .brand__mark {
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+}
+
+.footer-nav {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 1.5rem 2rem;
+}
+
+.footer-nav__col h2 {
+    font-size: 0.95rem;
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--copper);
+}
+
+.footer-nav__col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.footer-nav__col a {
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.footer-nav__col a:hover,
+.footer-nav__col a:focus-visible {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.site-footer__legal {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0.75rem var(--gutter) 1.25rem;
+    border-top: 2px solid var(--copper);
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* ---------------------------------------------------------------- Mobile */
+
+@media (max-width: 40rem) {
+    .main-nav {
+        order: 3;
+        flex-basis: 100%;
+    }
+
+    .main-nav__list {
+        justify-content: space-between;
+    }
+
+    .main-nav__toggle {
+        min-width: 0;
+    }
+
+    /* Keep the last dropdown inside the viewport */
+    .main-nav__item:last-child .dropdown {
+        left: auto;
+        right: 0;
+    }
+
+    .header-actions {
+        margin-left: auto;
+    }
+
+    .search:focus-within .search__input {
+        width: 9rem;
+    }
 }

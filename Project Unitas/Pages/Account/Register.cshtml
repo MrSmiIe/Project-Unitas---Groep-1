@@ -1,0 +1,62 @@
+@page
+@model Project_Unitas.Pages.Account.RegisterModel
+@{
+    ViewData["Title"] = "Registreren";
+}
+
+<div class="page-header">
+    <h1 class="tab-title">Registreren</h1>
+</div>
+
+<div class="form-narrow">
+    <section class="card">
+        <p>Maak een klantaccount aan om machines te bestellen en het klantenportaal te gebruiken.</p>
+
+        <form class="form" method="post">
+            <div asp-validation-summary="ModelOnly" class="field-error"></div>
+
+            <div class="field">
+                <label asp-for="Input.Company"></label>
+                <input asp-for="Input.Company" autocomplete="organization" />
+                <span asp-validation-for="Input.Company" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Name"></label>
+                <input asp-for="Input.Name" autocomplete="name" />
+                <span asp-validation-for="Input.Name" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" autocomplete="email" />
+                <span asp-validation-for="Input.Email" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" autocomplete="new-password" aria-describedby="password-rules" />
+                <p class="field-hint" id="password-rules">
+                    Minimaal 12 tekens, met een hoofdletter, een kleine letter, een cijfer en een speciaal teken.
+                </p>
+                <span asp-validation-for="Input.Password" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" autocomplete="new-password" />
+                <span asp-validation-for="Input.ConfirmPassword" class="field-error"></span>
+            </div>
+
+            <button class="button button--dark" type="submit">Account aanmaken</button>
+        </form>
+    </section>
+
+    <p class="form-footer">
+        Heeft u al een account? <a class="link" asp-page="/Account/Login">Log hier in</a>
+    </p>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
