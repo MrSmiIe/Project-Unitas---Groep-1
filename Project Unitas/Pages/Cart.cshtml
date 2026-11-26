@@ -2,7 +2,7 @@
 @model CartModel
 @{
     ViewData["Title"] = "Winkelwagen";
-    var lines = Model.Cart.Lines;
+    var lines = Model.Summary.Lines;
 }
 
 <div class="page-header">
@@ -50,15 +50,23 @@ else
             <h2 class="section-heading" id="summary-title">Overzicht</h2>
             <dl class="specs">
                 <dt>Subtotaal</dt>
-                <dd>@Format.Price(Model.Cart.Subtotal)</dd>
+                <dd>@Format.Price(Model.Summary.Subtotal)</dd>
                 <dt>Btw (21%)</dt>
-                <dd>@Format.Price(Model.Cart.Vat)</dd>
+                <dd>@Format.Price(Model.Summary.Vat)</dd>
                 <dt>Totaal</dt>
-                <dd><strong>@Format.Price(Model.Cart.Total)</strong></dd>
+                <dd><strong>@Format.Price(Model.Summary.Total)</strong></dd>
             </dl>
-            @* TODO: link to the checkout once ordering is built. Ordering requires an account. *@
-            <a class="button button--dark cart-checkout" asp-page="/Account/Login">Inloggen om te bestellen</a>
-            <p class="field-hint">Bestellen kan alleen met een klantaccount.</p>
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                @* TODO: checkout + Orders table. *@
+                <button class="button button--dark cart-checkout" type="button" disabled>Bestellen</button>
+                <p class="field-hint">Online bestellen volgt binnenkort. Neem voor nu <a class="link" asp-page="/Contact" asp-route-onderwerp="Offerte aanvragen">contact</a> met ons op.</p>
+            }
+            else
+            {
+                <a class="button button--dark cart-checkout" asp-page="/Account/Login" asp-route-returnUrl="/Cart">Inloggen om te bestellen</a>
+                <p class="field-hint">Bestellen kan alleen met een klantaccount.</p>
+            }
         </aside>
     </div>
 }

@@ -8,10 +8,17 @@ namespace Project_Unitas.Services
         public decimal Total => Machine.Price * Quantity;
     }
 
+    public record CartSummary(IReadOnlyList<CartLine> Lines)
+    {
+        public decimal Subtotal => Lines.Sum(l => l.Total);
+        public decimal Vat => Math.Round(Subtotal * CartService.VatRate, 2);
+        public decimal Total => Subtotal + Vat;
+    }
+
     /// <summary>
     /// Shopping cart stored in the visitor's session (server-side; the browser only
     /// holds a session cookie). Only machine ids and quantities are stored — prices
-    /// always come from the catalog, so they cannot be tampered with.
+    /// always come from the database, so they cannot be tampered with.
     /// </summary>
     public class CartService(IHttpContextAccessor httpContextAccessor, MachineCatalog catalog)
     {
@@ -41,25 +48,26 @@ namespace Project_Unitas.Services
         private void Save(Dictionary<int, int> items) =>
             Session.SetString(SessionKey, JsonSerializer.Serialize(items));
 
-        public IReadOnlyList<CartLine> Lines =>
-            Load()
-                .Select(item => (Machine: catalog.Find(item.Key), Quantity: item.Value))
-                .Where(item => item.Machine is not null)
-                .Select(item => new CartLine(item.Machine!, item.Quantity))
-                .ToList();
-
+        /// <summary>Number of items (no database needed; used for the header badge).</summary>
         public int Count => Load().Values.Sum();
 
-        public decimal Subtotal => Lines.Sum(l => l.Total);
+        public async Task<CartSummary> GetSummaryAsync()
+        {
+            var items = Load();
+            if (items.Count == 0) return new CartSummary([]);
 
-        public decimal Vat => Math.Round(Subtotal * VatRate, 2);
-
-        public decimal Total => Subtotal + Vat;
+            var machines = await catalog.FindManyAsync(items.Keys);
+            var lines = machines
+                .Select(m => new CartLine(m, items[m.Id]))
+                .OrderBy(l => l.Machine.Id)
+                .ToList();
+            return new CartSummary(lines);
+        }
 
         /// <returns>false when the machine does not exist.</returns>
-        public bool Add(int machineId, int quantity = 1)
+        public async Task<bool> AddAsync(int machineId, int quantity = 1)
         {
-            if (catalog.Find(machineId) is null) return false;
+            if (!await catalog.ExistsAsync(machineId)) return false;
 
             var items = Load();
             items[machineId] = Math.Clamp(items.GetValueOrDefault(machineId) + quantity, 1, MaxQuantity);

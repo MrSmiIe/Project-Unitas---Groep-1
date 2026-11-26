@@ -6,21 +6,22 @@ namespace Project_Unitas.Pages
 {
     public class CartModel(CartService cart, MachineCatalog catalog) : PageModel
     {
-        public CartService Cart => cart;
+        public CartSummary Summary { get; private set; } = new([]);
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
+            Summary = await cart.GetSummaryAsync();
         }
 
-        public IActionResult OnPostAdd(int id, int quantity = 1)
+        public async Task<IActionResult> OnPostAddAsync(int id, int quantity = 1)
         {
-            var machine = catalog.Find(id);
+            var machine = await catalog.FindAsync(id);
             if (machine is null || quantity < 1)
             {
                 return BadRequest();
             }
 
-            cart.Add(id, quantity);
+            await cart.AddAsync(id, quantity);
             TempData["StatusMessage"] = $"{machine.Name} is toegevoegd aan je winkelwagen.";
 
             // Go back to the page the visitor came from, if it is a page on this site.
@@ -45,9 +46,9 @@ namespace Project_Unitas.Pages
             return RedirectToPage();
         }
 
-        public IActionResult OnPostRemove(int id)
+        public async Task<IActionResult> OnPostRemoveAsync(int id)
         {
-            var machine = catalog.Find(id);
+            var machine = await catalog.FindAsync(id);
             cart.Remove(id);
             if (machine is not null)
             {

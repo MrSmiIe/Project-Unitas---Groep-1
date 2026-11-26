@@ -31,9 +31,9 @@ namespace Project_Unitas.Pages
             }
         }
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            FeaturedMachines = catalog.All;
+            FeaturedMachines = await catalog.GetAllAsync();
 
             // TODO: replace with real server status data.
             Servers =

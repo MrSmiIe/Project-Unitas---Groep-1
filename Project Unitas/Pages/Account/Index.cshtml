@@ -1,0 +1,40 @@
+@page
+@model Project_Unitas.Pages.Account.IndexModel
+@{
+    ViewData["Title"] = "Mijn account";
+}
+
+<div class="page-header">
+    <h1 class="tab-title">Mijn account</h1>
+</div>
+
+<p class="page-intro">Welkom, @Model.Customer.FullName.</p>
+
+<div class="split">
+    <section class="card" aria-labelledby="details-title">
+        <h2 class="section-heading" id="details-title">Mijn gegevens</h2>
+        <dl class="specs">
+            <dt>Naam</dt>
+            <dd>@Model.Customer.FullName</dd>
+            <dt>Bedrijf</dt>
+            <dd>@Model.Customer.CompanyName</dd>
+            <dt>E-mailadres</dt>
+            <dd>@Model.Customer.Email</dd>
+            <dt>Tweestapsverificatie</dt>
+            <dd>Aan &middot; <a class="link" asp-page="/Account/Mfa">details</a></dd>
+        </dl>
+    </section>
+
+    <aside class="stack">
+        @* TODO: orders, registered machines (assetregistratie) and service requests. *@
+        <section class="panel panel--dark" aria-labelledby="portal-title">
+            <h2 class="section-heading" id="portal-title">Klantenportaal</h2>
+            <p>Binnenkort ziet u hier uw bestellingen, uw machines en de status van uw serviceverzoeken.</p>
+            <a class="button" asp-page="/Machines/Index">Machines bekijken</a>
+        </section>
+
+        <form method="post" asp-page="/Account/Logout">
+            <button class="button button--ghost" type="submit">Uitloggen</button>
+        </form>
+    </aside>
+</div>

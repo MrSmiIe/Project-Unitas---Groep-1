@@ -9,9 +9,9 @@ namespace Project_Unitas.Pages.Machines
     {
         public Machine Machine { get; private set; } = default!;
 
-        public IActionResult OnGet(int id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
-            var machine = catalog.Find(id);
+            var machine = await catalog.FindAsync(id);
             if (machine is null) return NotFound();
 
             Machine = machine;

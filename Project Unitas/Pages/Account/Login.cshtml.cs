@@ -1,32 +1,67 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Project_Unitas.Models;
 
 namespace Project_Unitas.Pages.Account
 {
-    public class LoginModel : PageModel
+    public class LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger) : PageModel
     {
         [BindProperty]
         public LoginInput Input { get; set; } = new();
 
-        public void OnGet()
+        /// <summary>Page to return to after logging in (only local URLs are accepted).</summary>
+        [BindProperty(SupportsGet = true)]
+        public string? ReturnUrl { get; set; }
+
+        public IActionResult OnGet()
         {
+            if (signInManager.IsSignedIn(User))
+            {
+                return RedirectToPage("/Account/Index");
+            }
+            return Page();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            // TODO: check the credentials against the user database, then ask for the MFA code.
-            // Security: give the same message for "unknown e-mail" and "wrong password",
-            // and lock the account for a while after too many failed attempts.
+            var result = await signInManager.PasswordSignInAsync(
+                Input.Email.Trim(), Input.Password, isPersistent: false, lockoutOnFailure: true);
 
-            TempData["StatusMessage"] = "Inloggen is nog niet beschikbaar: de koppeling met de klantendatabase en MFA wordt nog gebouwd.";
-            TempData["StatusType"] = "info";
-            return RedirectToPage();
+            if (result.RequiresTwoFactor)
+            {
+                // Password was right; now the authenticator code is needed.
+                return RedirectToPage("/Account/LoginWith2fa", new { ReturnUrl });
+            }
+
+            if (result.Succeeded)
+            {
+                // Only happens for accounts that haven't set up MFA yet: send them there first.
+                logger.LogInformation("User {Email} logged in without MFA; redirecting to MFA setup.", Input.Email);
+                TempData["StatusMessage"] = "Stel eerst tweestapsverificatie in om uw account te beveiligen.";
+                TempData["StatusType"] = "info";
+                return RedirectToPage("/Account/Mfa");
+            }
+
+            if (result.IsLockedOut)
+            {
+                logger.LogWarning("Login for {Email} refused: account locked out. IP {Ip}.",
+                    Input.Email, HttpContext.Connection.RemoteIpAddress);
+                ModelState.AddModelError(string.Empty,
+                    "Dit account is tijdelijk geblokkeerd na te veel mislukte pogingen. Probeer het over 15 minuten opnieuw.");
+                return Page();
+            }
+
+            // Same message for "unknown e-mail" and "wrong password": don't reveal which accounts exist.
+            logger.LogWarning("Failed login for {Email} from IP {Ip}.", Input.Email, HttpContext.Connection.RemoteIpAddress);
+            ModelState.AddModelError(string.Empty, "Onjuist e-mailadres of wachtwoord.");
+            return Page();
         }
 
         public class LoginInput

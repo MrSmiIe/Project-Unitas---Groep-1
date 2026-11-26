@@ -1,0 +1,49 @@
+# systemd service for the Unitas webshop on the web server (172.20.66.40).
+# Installed as /etc/systemd/system/unitas.service by deploy-webserver.sh.
+[Unit]
+Description=Unitas webshop (ASP.NET Core)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+WorkingDirectory=/opt/unitas
+ExecStart=/usr/bin/dotnet "/opt/unitas/Project Unitas.dll"
+Restart=always
+RestartSec=5
+
+# Runs as its own account without login rights (least privilege), never as root.
+User=unitas
+Group=unitas
+
+# Database connection string (ConnectionStrings__Unitas). Readable by root only;
+# systemd reads it before starting the app as "unitas".
+EnvironmentFile=/etc/unitas/unitas.env
+Environment=ASPNETCORE_ENVIRONMENT=Production
+# Only reachable from this machine; visitors go through Apache on port 80.
+Environment=ASPNETCORE_URLS=http://127.0.0.1:5000
+Environment=DOTNET_NOLOGO=1
+Environment=DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# Keys for login cookies and form tokens are kept in /var/lib/unitas, so users stay
+# logged in after a restart.
+StateDirectory=unitas
+StateDirectoryMode=0700
+Environment=HOME=/var/lib/unitas
+
+# Hardening: the app can't change the system, see home folders or gain privileges.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+
+# Logs go to the journal: journalctl -u unitas
+SyslogIdentifier=unitas
+
+[Install]
+WantedBy=multi-user.target

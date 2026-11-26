@@ -116,8 +116,24 @@
 }
 
 .dropdown a:hover,
-.dropdown a:focus-visible {
+.dropdown a:focus-visible,
+.dropdown__button:hover,
+.dropdown__button:focus-visible {
     background: var(--chocolate);
+}
+
+/* Log-out is a form button (POST) styled like the menu links */
+.dropdown__button {
+    display: block;
+    width: 100%;
+    padding: 0.45rem 0.75rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: none;
+    color: var(--cream);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
 }
 
 /* Open on click/tap (site.js toggles .is-open) and on hover for mouse users */

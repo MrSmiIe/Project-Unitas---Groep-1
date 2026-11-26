@@ -1,31 +1,62 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Project_Unitas.Models;
 
 namespace Project_Unitas.Pages.Account
 {
-    public class RegisterModel : PageModel
+    public class RegisterModel(
+        UserManager<ApplicationUser> userManager,
+        SignInManager<ApplicationUser> signInManager,
+        ILogger<RegisterModel> logger) : PageModel
     {
         [BindProperty]
         public RegisterInput Input { get; set; } = new();
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (signInManager.IsSignedIn(User))
+            {
+                return RedirectToPage("/Account/Index");
+            }
+            return Page();
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            // TODO: save the account in the database (store a password HASH, never the password
-            // itself — ASP.NET Core Identity does this for you) and set up MFA.
+            var email = Input.Email.Trim();
+            var user = new ApplicationUser
+            {
+                UserName = email,
+                Email = email,
+                FullName = Input.Name.Trim(),
+                CompanyName = Input.Company.Trim(),
+                CreatedAtUtc = DateTime.UtcNow,
+            };
 
-            TempData["StatusMessage"] = "Registreren is nog niet beschikbaar: de koppeling met de klantendatabase wordt nog gebouwd.";
-            TempData["StatusType"] = "info";
-            return RedirectToPage();
+            // Identity stores only a salted HASH of the password, never the password itself,
+            // and checks it against the password policy in Program.cs.
+            var result = await userManager.CreateAsync(user, Input.Password);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
+                return Page();
+            }
+
+            logger.LogInformation("New customer account created: {UserId}.", user.Id);
+
+            await signInManager.SignInAsync(user, isPersistent: false);
+            TempData["StatusMessage"] = "Uw account is aangemaakt. Stel nu tweestapsverificatie in.";
+            return RedirectToPage("/Account/Mfa");
         }
 
         public class RegisterInput
@@ -46,7 +77,7 @@ namespace Project_Unitas.Pages.Account
             [Display(Name = "E-mailadres")]
             public string Email { get; set; } = "";
 
-            // Strong password policy (see the project's security requirements).
+            // Strong password policy (also enforced by Identity in Program.cs).
             [Required(ErrorMessage = "Kies een wachtwoord.")]
             [StringLength(128, MinimumLength = 12, ErrorMessage = "Uw wachtwoord moet minimaal 12 tekens lang zijn.")]
             [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).*$",
