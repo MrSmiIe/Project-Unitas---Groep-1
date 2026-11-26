@@ -1,28 +1,23 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\",
-<<<<<<< HEAD
-  "Documents": [],
-=======
   "Documents": [
     {
       "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\about.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\about.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\cart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\10.0.403\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
->>>>>>> AboutUs
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,11 +25,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-<<<<<<< HEAD
-          "SelectedChildIndex": -1,
-=======
-          "SelectedChildIndex": 4,
->>>>>>> AboutUs
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,20 +38,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-<<<<<<< HEAD
-=======
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "About.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\About.cshtml.cs",
-              "RelativeDocumentMoniker": "Pages\\About.cshtml.cs",
-              "ToolTip": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\About.cshtml.cs",
-              "RelativeToolTip": "Pages\\About.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-26T10:19:20.242Z"
             },
             {
               "$type": "Document",
@@ -70,36 +47,49 @@
               "RelativeDocumentMoniker": "Pages\\About.cshtml",
               "ToolTip": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\About.cshtml",
               "RelativeToolTip": "Pages\\About.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACcAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADsAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-11-26T08:52:06.1Z",
+              "WhenOpened": "2026-11-26T13:02:37.833Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAsAAAAAAAAAA==",
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Contact.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Contact.cshtml",
+              "ToolTip": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Contact.cshtml",
+              "RelativeToolTip": "Pages\\Contact.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-11-25T23:24:54.485Z",
+              "WhenOpened": "2026-11-26T12:38:04.381Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "_Layout.cshtml.css",
-              "DocumentMoniker": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Shared\\_Layout.cshtml.css",
-              "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml.css",
-              "ToolTip": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Shared\\_Layout.cshtml.css",
-              "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-11-25T23:08:25.424Z"
->>>>>>> AboutUs
+              "Title": "Microsoft.NET.Sdk.StaticWebAssets.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\10.0.403\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.403\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\10.0.403\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\10.0.403\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
+              "ViewState": "AgIAABcCAAAAAAAAAAAqwMECAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-11-26T12:37:51.214Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cart.cshtml",
+              "DocumentMoniker": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Cart.cshtml",
+              "RelativeDocumentMoniker": "Pages\\Cart.cshtml",
+              "ToolTip": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Cart.cshtml",
+              "RelativeToolTip": "Pages\\Cart.cshtml",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-11-26T12:37:29.6Z",
+              "EditorCaption": ""
             }
           ]
         }

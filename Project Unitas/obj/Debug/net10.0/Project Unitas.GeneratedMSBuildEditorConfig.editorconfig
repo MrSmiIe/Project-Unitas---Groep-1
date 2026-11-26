@@ -27,16 +27,44 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWJvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Contact.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/FAQ.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRkFRLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Machines/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFjaGluZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Machines/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFjaGluZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Shared/_MachineCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9NYWNoaW5lQ2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Shared/_StatusMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9TdGF0dXNNZXNzYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Shared/_ValidationScriptsPartial.cshtml]
@@ -50,6 +78,14 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Cart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-z4isic1356
+
+[C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-1mlry38q8l
 
 [C:/Users/eterd/OneDrive - ROC van Twente/Desktop/J2H/Cyber/Project-Unitas---Groep-1/Project Unitas/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Project Unitas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95d7760e0cd3e4207d4cb6e2192e97f216fc3489")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a0e748ec1e74a07ad482f2a32beee79d879cbd3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Project Unitas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Project Unitas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

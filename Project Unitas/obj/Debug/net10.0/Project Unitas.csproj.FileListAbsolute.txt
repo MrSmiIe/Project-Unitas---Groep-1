@@ -119,12 +119,14 @@ C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groe
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\scopedcss\Pages\Cart.cshtml.rz.scp.css
+C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\scopedcss\Pages\Index.cshtml.rz.scp.css
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\scopedcss\bundle\Project Unitas.styles.css
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\scopedcss\projectbundle\Project Unitas.bundle.scp.css
-C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\mizxjf6pqy-{0}-5ipweew5fc-5ipweew5fc.gz
+C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\mizxjf6pqy-{0}-vn75704jrs-vn75704jrs.gz
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\afbbzwlo7c-{0}-61n19gt1b8-61n19gt1b8.gz
-C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\kk5eu3fy8p-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\kk5eu3fy8p-{0}-paymdsqich-paymdsqich.gz
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\r79gm0kprs-{0}-t1cqhe9u97-t1cqhe9u97.gz
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\3e83qja25t-{0}-c2jlpeoesf-c2jlpeoesf.gz
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\wb7k3htlcq-{0}-sejl45xvog-sejl45xvog.gz
@@ -184,8 +186,8 @@ C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groe
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\6bknjyyg4n-{0}-9vr69e8ynj-9vr69e8ynj.gz
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\ernezjv0go-{0}-87fc7y1x7t-87fc7y1x7t.gz
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\jafpjesazk-{0}-mlv21k5csn-mlv21k5csn.gz
-C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\8q7uev9pbd-{0}-0dzguxb0l6-0dzguxb0l6.gz
-C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\v03tnnrnbq-{0}-0dzguxb0l6-0dzguxb0l6.gz
+C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\8q7uev9pbd-{0}-fjctz9rch9-fjctz9rch9.gz
+C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\compressed\v03tnnrnbq-{0}-fjctz9rch9-fjctz9rch9.gz
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Users\eterd\OneDrive - ROC van Twente\Desktop\J2H\Cyber\Project-Unitas---Groep-1\Project Unitas\obj\Debug\net10.0\staticwebassets.development.json
