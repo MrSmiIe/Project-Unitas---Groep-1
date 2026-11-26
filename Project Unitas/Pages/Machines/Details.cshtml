@@ -1,0 +1,41 @@
+@page "{id:int}"
+@model Project_Unitas.Pages.Machines.DetailsModel
+@{
+    ViewData["Title"] = Model.Machine.Name;
+}
+
+<p>
+    <a class="link" asp-page="/Machines/Index">← Terug naar alle machines</a>
+</p>
+
+<div class="split">
+    <div class="img-placeholder media" role="img" aria-label="Afbeelding volgt"></div>
+
+    <div class="card">
+        <span class="product-card__category">@Model.Machine.Category</span>
+        <h1>@Model.Machine.Name</h1>
+        <p>@Model.Machine.Description</p>
+
+        <p class="price">
+            @Format.Price(Model.Machine.Price) <small>excl. btw</small>
+        </p>
+
+        <form method="post" asp-page="/Cart" asp-page-handler="Add" class="add-to-cart">
+            <input type="hidden" name="id" value="@Model.Machine.Id" />
+            <label for="quantity">Aantal</label>
+            <input class="qty" id="quantity" name="quantity" type="number" value="1" min="1" max="@CartService.MaxQuantity" required />
+            <button class="button button--dark" type="submit">In winkelwagen</button>
+        </form>
+    </div>
+</div>
+
+<section class="card section-gap" aria-labelledby="specs-title">
+    <h2 class="section-heading" id="specs-title">Specificaties</h2>
+    <dl class="specs">
+        @foreach (var spec in Model.Machine.Specs)
+        {
+            <dt>@spec.Key</dt>
+            <dd>@spec.Value</dd>
+        }
+    </dl>
+</section>

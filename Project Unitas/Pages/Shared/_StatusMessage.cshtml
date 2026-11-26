@@ -1,0 +1,11 @@
+@* Shows a one-time message set with TempData["StatusMessage"] (and optionally TempData["StatusType"] = "info" or "error"). *@
+@{
+    var message = TempData["StatusMessage"] as string;
+    var type = TempData["StatusType"] as string;
+}
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert @(string.IsNullOrEmpty(type) ? "" : $"alert--{type}")" role="status">
+        @message
+    </div>
+}

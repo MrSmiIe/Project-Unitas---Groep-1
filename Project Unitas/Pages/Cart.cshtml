@@ -1,0 +1,64 @@
+@page
+@model CartModel
+@{
+    ViewData["Title"] = "Winkelwagen";
+    var lines = Model.Cart.Lines;
+}
+
+<div class="page-header">
+    <h1 class="tab-title">Winkelwagen</h1>
+</div>
+
+@if (lines.Count == 0)
+{
+    <div class="card empty-state">
+        <p>Je winkelwagen is nog leeg.</p>
+        <a class="button button--dark" asp-page="/Machines/Index">Bekijk onze machines</a>
+    </div>
+}
+else
+{
+    <div class="split">
+        <section class="card" aria-label="Artikelen">
+            <ul class="cart-lines">
+                @foreach (var line in lines)
+                {
+                    <li class="cart-line">
+                        <div class="cart-line__image img-placeholder" aria-hidden="true"></div>
+                        <div class="cart-line__info">
+                            <a class="link" asp-page="/Machines/Details" asp-route-id="@line.Machine.Id">@line.Machine.Name</a>
+                            <span>@Format.Price(line.Machine.Price) per stuk</span>
+                        </div>
+                        <form class="cart-line__qty" method="post" asp-page-handler="Update">
+                            <input type="hidden" name="id" value="@line.Machine.Id" />
+                            <label class="visually-hidden" for="qty-@line.Machine.Id">Aantal @line.Machine.Name</label>
+                            <input class="qty" id="qty-@line.Machine.Id" name="quantity" type="number"
+                                   value="@line.Quantity" min="0" max="@CartService.MaxQuantity" data-autosubmit />
+                            <button class="button button--ghost" type="submit">Bijwerken</button>
+                        </form>
+                        <strong class="cart-line__total">@Format.Price(line.Total)</strong>
+                        <form method="post" asp-page-handler="Remove">
+                            <input type="hidden" name="id" value="@line.Machine.Id" />
+                            <button class="cart-line__remove" type="submit" aria-label="@line.Machine.Name verwijderen">✕</button>
+                        </form>
+                    </li>
+                }
+            </ul>
+        </section>
+
+        <aside class="card" aria-labelledby="summary-title">
+            <h2 class="section-heading" id="summary-title">Overzicht</h2>
+            <dl class="specs">
+                <dt>Subtotaal</dt>
+                <dd>@Format.Price(Model.Cart.Subtotal)</dd>
+                <dt>Btw (21%)</dt>
+                <dd>@Format.Price(Model.Cart.Vat)</dd>
+                <dt>Totaal</dt>
+                <dd><strong>@Format.Price(Model.Cart.Total)</strong></dd>
+            </dl>
+            @* TODO: link to the checkout once ordering is built. Ordering requires an account. *@
+            <a class="button button--dark cart-checkout" asp-page="/Account/Login">Inloggen om te bestellen</a>
+            <p class="field-hint">Bestellen kan alleen met een klantaccount.</p>
+        </aside>
+    </div>
+}

@@ -1,10 +1,84 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@* ---------- Carousel ---------- *@
+<section class="carousel panel panel--dark" aria-labelledby="carousel-title" data-carousel>
+    <h1 class="tab-title carousel__title" id="carousel-title">Uitgelichte machines</h1>
+
+    <div class="carousel__body">
+        <button class="carousel__arrow carousel__arrow--prev" type="button" data-carousel-prev aria-label="Vorige">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+        </button>
+
+        <ul class="carousel__track" data-carousel-track tabindex="0" aria-label="Machines">
+            @foreach (var machine in Model.FeaturedMachines)
+            {
+                <li class="carousel__slide">
+                    <a class="carousel__tile img-placeholder" asp-page="/Machines/Details" asp-route-id="@machine.Id">
+                        <span class="carousel__caption">@machine.Name</span>
+                    </a>
+                </li>
+            }
+        </ul>
+
+        <button class="carousel__arrow carousel__arrow--next" type="button" data-carousel-next aria-label="Volgende">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+        </button>
+    </div>
+
+    <div class="carousel__progress" aria-hidden="true">
+        <div class="carousel__thumb" data-carousel-thumb></div>
+    </div>
+</section>
+
+@* ---------- Live server status ---------- *@
+<section class="status panel panel--caramel" aria-labelledby="status-title">
+    <h2 class="status__title" id="status-title">Live server status</h2>
+
+    <table class="status__table">
+        <thead class="visually-hidden">
+            <tr>
+                <th scope="col">Status</th>
+                <th scope="col">Server</th>
+                <th scope="col">Toestand</th>
+                <th scope="col">Ping</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var server in Model.Servers)
+            {
+                var modifier = server.State.ToString().ToLowerInvariant();
+                <tr>
+                    <td class="status__dot-cell">
+                        <span class="status__dot status__dot--@modifier" aria-hidden="true"></span>
+                    </td>
+                    <th class="status__name" scope="row">@server.Name</th>
+                    <td class="status__state">@server.State</td>
+                    <td class="status__ping">@(server.PingMs is int ms ? $"{ms} ms" : "–")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
+
+@* ---------- Over ons ---------- *@
+<section class="about" aria-labelledby="about-title">
+    <div class="about__bar">
+        <h2 class="tab-title about__title" id="about-title">Over ons</h2>
+    </div>
+
+    <div class="about__content">
+        <div class="about__text panel panel--dark">
+            <p>
+                Unitas Bakery Systems BV ontwerpt en bouwt machines voor bakkerijen, in onze
+                eigen productieomgeving. Onze technische buitendienst zorgt voor installatie,
+                onderhoud en snelle hulp bij storingen.
+            </p>
+            <a class="button" asp-page="/About">Lees meer</a>
+        </div>
+        <div class="about__image img-placeholder" role="img" aria-label="Afbeelding volgt"></div>
+    </div>
+</section>

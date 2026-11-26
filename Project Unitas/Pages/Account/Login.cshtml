@@ -1,0 +1,43 @@
+@page
+@model Project_Unitas.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Inloggen";
+}
+
+<div class="page-header">
+    <h1 class="tab-title">Inloggen</h1>
+</div>
+
+<div class="form-narrow">
+    <section class="card">
+        <p>Log in op het klantenportaal om te bestellen en uw machines en serviceverzoeken te bekijken.</p>
+
+        <form class="form" method="post">
+            <div asp-validation-summary="ModelOnly" class="field-error"></div>
+
+            <div class="field">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" autocomplete="username" />
+                <span asp-validation-for="Input.Email" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" autocomplete="current-password" />
+                <span asp-validation-for="Input.Password" class="field-error"></span>
+            </div>
+
+            <p class="field-hint">Na het inloggen vragen we om een code uit uw authenticator-app (MFA).</p>
+
+            <button class="button button--dark" type="submit">Inloggen</button>
+        </form>
+    </section>
+
+    <p class="form-footer">
+        Nog geen account? <a class="link" asp-page="/Account/Register">Registreer hier</a>
+    </p>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
