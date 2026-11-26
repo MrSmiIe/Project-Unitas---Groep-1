@@ -1,0 +1,39 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Unitas</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Project_Unitas.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a asp-area="" asp-page="/Index">Unitas</a>
+
+            <div>
+                <a asp-area="" asp-page="/Index">Home</a>
+                <a asp-area="" asp-page="/Machines">Machines</a>
+                <a asp-area="" asp-page="/About">About us</a>
+                <a asp-area="" asp-page="/Contact">Contact</a>
+            </div>
+
+            <div>
+                <a asp-area="" asp-page="/FAQ">FAQ</a>
+                <a asp-area="" asp-page="/Cart">Shopping cart</a>
+                <a asp-area="" asp-page="/Account/Login">My account</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
