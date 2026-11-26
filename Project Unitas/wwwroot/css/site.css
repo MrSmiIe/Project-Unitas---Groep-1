@@ -1,0 +1,578 @@
+/* ==========================================================================
+   Unitas - global styles
+   Colours sampled from the Figma homepage mockup (colour palette 3).
+   Layout-specific styles live in Pages/Shared/_Layout.cshtml.css,
+   page-specific styles in Pages/<Page>.cshtml.css (scoped CSS).
+   ========================================================================== */
+
+:root {
+    /* Palette */
+    --chocolate: #3e1613;   /* header, footer, dark panels */
+    --brown: #7c3f20;       /* tabs, tiles, secondary blocks */
+    --copper: #a66028;      /* thin accent lines */
+    --caramel: #b56a2b;     /* status panel, borders */
+    --toffee: #c07f4e;      /* page background */
+    --cream: #f1d8b8;       /* light text, light cells */
+
+    /* Status colours */
+    --status-online: #56c25a;
+    --status-offline: #c25656;
+    --status-warning: #c0c256;
+
+    /* Tokens */
+    --radius: 0.5rem;
+    --radius-sm: 0.25rem;
+    --content-width: 72rem;
+    --gutter: clamp(1rem, 4vw, 2.5rem);
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font);
+    line-height: 1.5;
+    color: var(--chocolate);
+    background: var(--toffee);
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: var(--content-width);
+    margin-inline: auto;
+    padding: 2rem var(--gutter) 3rem;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+    margin: 0;
+}
+
+:focus-visible {
+    outline: 3px solid var(--cream);
+    outline-offset: 2px;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Shared components
+   -------------------------------------------------------------------------- */
+
+/* Rounded content panel */
+.panel {
+    border-radius: var(--radius);
+    padding: clamp(1rem, 3vw, 1.75rem);
+}
+
+.panel--dark {
+    background: var(--chocolate);
+    color: var(--cream);
+}
+
+.panel--caramel {
+    background: var(--caramel);
+}
+
+/* Brown "tab" used for section titles (e.g. "Over ons") */
+.tab-title {
+    display: inline-block;
+    padding: 0.4rem 1.5rem;
+    border-radius: var(--radius-sm);
+    background: var(--brown);
+    color: var(--cream);
+    font-size: 1.125rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Image placeholder: the crossed box used in the mockup until real
+   images are available. */
+.img-placeholder {
+    position: relative;
+    background:
+        linear-gradient(to top right, transparent calc(50% - 1px), var(--caramel) 50%, transparent calc(50% + 1px)),
+        linear-gradient(to top left, transparent calc(50% - 1px), var(--caramel) 50%, transparent calc(50% + 1px)),
+        var(--brown);
+    border: 3px solid var(--caramel);
+    border-radius: var(--radius-sm);
+}
+
+.button {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background: var(--cream);
+    color: var(--chocolate);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   Page building blocks (used by all pages except the homepage)
+   -------------------------------------------------------------------------- */
+
+/* Page title: dark bar with a brown tab, like "Over ons" in the mockup */
+.page-header {
+    background: var(--chocolate);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem;
+    margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+    text-align: center;
+}
+
+.page-header .tab-title {
+    min-width: min(28rem, 100%);
+    font-size: clamp(1.25rem, 3vw, 1.6rem);
+}
+
+.page-intro {
+    max-width: 65ch;
+    margin: 0 auto clamp(1.5rem, 4vw, 2.5rem);
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.section-heading {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.stack > * + * {
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+/* Two columns that stack on small screens */
+.split {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: start;
+}
+
+@media (max-width: 48rem) {
+    .split {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+/* Light card on the toffee background */
+.card {
+    background: var(--cream);
+    color: var(--chocolate);
+    border: 4px solid var(--brown);
+    border-radius: var(--radius);
+    padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.card > :first-child { margin-top: 0; }
+.card > :last-child { margin-bottom: 0; }
+
+.price {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.price small {
+    font-weight: 400;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.button--dark {
+    background: var(--chocolate);
+    color: var(--cream);
+}
+
+.button--dark:hover {
+    background: var(--brown);
+}
+
+.button--ghost {
+    background: transparent;
+    color: inherit;
+    border: 2px solid currentColor;
+    padding: calc(0.5rem - 2px) calc(1.25rem - 2px);
+}
+
+.button--ghost:hover {
+    background: rgb(0 0 0 / 0.08);
+}
+
+.link {
+    font-weight: 600;
+    text-underline-offset: 0.2em;
+}
+
+/* Messages ("Toegevoegd aan winkelwagen", form results) */
+.alert {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-sm);
+    border-left: 6px solid var(--status-online);
+    background: var(--cream);
+    font-weight: 500;
+}
+
+.alert--info {
+    border-left-color: var(--brown);
+}
+
+.alert--error {
+    border-left-color: var(--status-offline);
+}
+
+/* Product grid */
+.product-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--chocolate);
+    color: var(--cream);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.product-card__image {
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+    border-width: 0 0 3px;
+}
+
+.product-card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1rem 1.1rem 1.2rem;
+}
+
+.product-card__category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.75;
+}
+
+.product-card__name {
+    font-size: 1.15rem;
+}
+
+.product-card__name a {
+    text-decoration: none;
+}
+
+/* Whole card is clickable via the name link */
+.product-card { position: relative; }
+.product-card__name a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+}
+
+.product-card__summary {
+    margin: 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.product-card__footer {
+    margin-top: auto;
+    padding-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+/* Keep the add-to-cart button clickable above the card link */
+.product-card__footer form {
+    position: relative;
+    z-index: 1;
+}
+
+/* Filter chips */
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+}
+
+.chip {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    background: var(--brown);
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.chip:hover {
+    background: var(--chocolate);
+}
+
+.chip[aria-current="page"] {
+    background: var(--cream);
+    color: var(--chocolate);
+}
+
+/* Forms */
+.form {
+    display: grid;
+    gap: 1.1rem;
+}
+
+.field {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.field label {
+    font-weight: 600;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 0.65rem 0.8rem;
+    border: 2px solid var(--brown);
+    border-radius: var(--radius-sm);
+    background: #fffaf3;
+    color: var(--chocolate);
+    font: inherit;
+}
+
+.field textarea {
+    min-height: 9rem;
+    resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    outline: 3px solid var(--caramel);
+    outline-offset: 1px;
+}
+
+.field .input-validation-error {
+    border-color: var(--status-offline);
+}
+
+.field-hint {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin: 0;
+}
+
+.field-error,
+.validation-summary-errors {
+    color: #8b1e1e;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.validation-summary-errors ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.form-narrow {
+    max-width: 28rem;
+    margin-inline: auto;
+}
+
+.form-footer {
+    margin: 1.25rem 0 0;
+    text-align: center;
+}
+
+/* Quantity input */
+.qty {
+    width: 4.5rem;
+    padding: 0.45rem 0.5rem;
+    border: 2px solid var(--brown);
+    border-radius: var(--radius-sm);
+    background: #fffaf3;
+    color: var(--chocolate);
+    font: inherit;
+    text-align: center;
+}
+
+/* FAQ accordion */
+.faq {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.faq details {
+    background: var(--cream);
+    border: 3px solid var(--brown);
+    border-radius: var(--radius-sm);
+}
+
+.faq summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq summary::after {
+    content: "+";
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    background: var(--brown);
+    color: var(--cream);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.faq details[open] summary::after {
+    content: "−";
+}
+
+.faq details > :not(summary) {
+    margin: 0;
+    padding: 0 1.1rem 1rem;
+}
+
+/* Key figures (Over ons) */
+.facts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 1rem;
+}
+
+.facts li {
+    background: var(--chocolate);
+    color: var(--cream);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.facts strong {
+    display: block;
+    font-size: 1.6rem;
+    color: #fff;
+}
+
+/* Definition list for specifications */
+.specs {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin: 0;
+    border-top: 2px solid var(--brown);
+}
+
+.specs dt,
+.specs dd {
+    margin: 0;
+    padding: 0.55rem 0.25rem;
+    border-bottom: 2px solid var(--brown);
+}
+
+.specs dt {
+    font-weight: 600;
+    padding-right: 1.5rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: clamp(2rem, 6vw, 3.5rem) 1rem;
+}
+
+.empty-state p {
+    margin: 0 0 1.25rem;
+}
+
+.media {
+    aspect-ratio: 4 / 3;
+}
+
+.add-to-cart {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.section-gap {
+    margin-top: clamp(1.5rem, 4vw, 2.5rem);
+}
