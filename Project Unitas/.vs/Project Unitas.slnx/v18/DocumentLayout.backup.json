@@ -7,16 +7,16 @@
       "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\about.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\about.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|c:\\users\\eterd\\onedrive - roc van twente\\desktop\\j2h\\cyber\\project-unitas---groep-1\\project unitas\\pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{68D2BB83-31F4-97CE-3F66-C3B9A16D0B31}|Project Unitas.csproj|solutionrelative:pages\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +42,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "About.cshtml.cs",
               "DocumentMoniker": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\About.cshtml.cs",
               "RelativeDocumentMoniker": "Pages\\About.cshtml.cs",
@@ -50,8 +50,7 @@
               "RelativeToolTip": "Pages\\About.cshtml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-11-26T10:19:20.242Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-26T10:19:20.242Z"
             },
             {
               "$type": "Document",
@@ -61,14 +60,14 @@
               "RelativeDocumentMoniker": "Pages\\About.cshtml",
               "ToolTip": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\About.cshtml",
               "RelativeToolTip": "Pages\\About.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACQAAAA2AAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACcAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-11-26T08:52:06.1Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml",
@@ -81,7 +80,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml.css",
               "DocumentMoniker": "C:\\Users\\eterd\\OneDrive - ROC van Twente\\Desktop\\J2H\\Cyber\\Project-Unitas---Groep-1\\Project Unitas\\Pages\\Shared\\_Layout.cshtml.css",
               "RelativeDocumentMoniker": "Pages\\Shared\\_Layout.cshtml.css",
@@ -89,8 +88,7 @@
               "RelativeToolTip": "Pages\\Shared\\_Layout.cshtml.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-11-25T23:08:25.424Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-11-25T23:08:25.424Z"
             }
           ]
         }
