@@ -1,0 +1,6 @@
+# Build output: Visual Studio / dotnet recreates these on every build
+bin/
+obj/
+
+# Visual Studio's own cache and settings
+.vs/
