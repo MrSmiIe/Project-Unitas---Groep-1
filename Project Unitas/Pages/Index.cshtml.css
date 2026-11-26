@@ -140,9 +140,7 @@ section + section {
 
 /* ---------------------------------------------------- Live server status */
 
-.status {
-    margin-inline: clamp(0rem, 2vw, 1.5rem);
-}
+/* Same width as the carousel; summary tiles on top, table below */
 
 /* Title with a dark bar on either side */
 .status__title {
@@ -163,10 +161,61 @@ section + section {
     background: var(--chocolate);
 }
 
+.status__summary {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.5rem, 2vw, 1rem);
+}
+
+.status__stat {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.9rem 1rem;
+    border-radius: var(--radius-sm);
+    border-top: 6px solid var(--brown);
+    background: var(--chocolate);
+    color: var(--cream);
+    text-align: center;
+}
+
+.status__stat--online { border-top-color: var(--status-online); }
+.status__stat--offline { border-top-color: var(--status-offline); }
+.status__stat--onderhoud { border-top-color: var(--status-warning); }
+
+.status__stat-value {
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.status__stat-label {
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
 .status__table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0 0.75rem;
+}
+
+.status__table thead th {
+    padding-bottom: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.status__table .status__head-state {
+    text-align: center;
+}
+
+.status__table .status__head-ping {
+    text-align: right;
 }
 
 .status__table td,
@@ -215,6 +264,12 @@ section + section {
     white-space: nowrap;
 }
 
+@media (max-width: 40rem) {
+    .status__summary {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 30rem) {
     .status__table td,
     .status__table th {
@@ -224,46 +279,5 @@ section + section {
 
     .status__state {
         border-width: 0 0.35rem;
-    }
-}
-
-/* --------------------------------------------------------------- Over ons */
-
-.about__bar {
-    background: var(--chocolate);
-    border-radius: var(--radius-sm);
-    padding: 0.6rem;
-    text-align: center;
-}
-
-.about__title {
-    min-width: min(28rem, 100%);
-}
-
-.about__content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: clamp(1rem, 3vw, 1.75rem);
-    margin-top: 1.25rem;
-}
-
-.about__text {
-    border: 4px solid var(--brown);
-    min-height: 12rem;
-}
-
-.about__text p {
-    margin: 0 0 1.25rem;
-    max-width: 60ch;
-}
-
-.about__image {
-    min-height: 12rem;
-    border-color: var(--chocolate);
-}
-
-@media (max-width: 40rem) {
-    .about__content {
-        grid-template-columns: 1fr;
     }
 }

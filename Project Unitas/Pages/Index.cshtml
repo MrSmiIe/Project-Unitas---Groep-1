@@ -38,13 +38,32 @@
 <section class="status panel panel--caramel" aria-labelledby="status-title">
     <h2 class="status__title" id="status-title">Live server status</h2>
 
+    <ul class="status__summary">
+        <li class="status__stat status__stat--online">
+            <span class="status__stat-value">@Model.CountByState(ServerState.Online)/@Model.Servers.Count</span>
+            <span class="status__stat-label">Online</span>
+        </li>
+        <li class="status__stat status__stat--offline">
+            <span class="status__stat-value">@Model.CountByState(ServerState.Offline)</span>
+            <span class="status__stat-label">Offline</span>
+        </li>
+        <li class="status__stat status__stat--onderhoud">
+            <span class="status__stat-value">@Model.CountByState(ServerState.Onderhoud)</span>
+            <span class="status__stat-label">Onderhoud</span>
+        </li>
+        <li class="status__stat">
+            <span class="status__stat-value">@(Model.AveragePingMs is int avg ? $"{avg} ms" : "–")</span>
+            <span class="status__stat-label">Gem. ping</span>
+        </li>
+    </ul>
+
     <table class="status__table">
-        <thead class="visually-hidden">
+        <thead>
             <tr>
-                <th scope="col">Status</th>
+                <th scope="col"><span class="visually-hidden">Indicator</span></th>
                 <th scope="col">Server</th>
-                <th scope="col">Toestand</th>
-                <th scope="col">Ping</th>
+                <th scope="col" class="status__head-state">Status</th>
+                <th scope="col" class="status__head-ping">Ping</th>
             </tr>
         </thead>
         <tbody>
@@ -62,23 +81,4 @@
             }
         </tbody>
     </table>
-</section>
-
-@* ---------- Over ons ---------- *@
-<section class="about" aria-labelledby="about-title">
-    <div class="about__bar">
-        <h2 class="tab-title about__title" id="about-title">Over ons</h2>
-    </div>
-
-    <div class="about__content">
-        <div class="about__text panel panel--dark">
-            <p>
-                Unitas Bakery Systems BV ontwerpt en bouwt machines voor bakkerijen, in onze
-                eigen productieomgeving. Onze technische buitendienst zorgt voor installatie,
-                onderhoud en snelle hulp bij storingen.
-            </p>
-            <a class="button" asp-page="/About">Lees meer</a>
-        </div>
-        <div class="about__image img-placeholder" role="img" aria-label="Afbeelding volgt"></div>
-    </div>
 </section>

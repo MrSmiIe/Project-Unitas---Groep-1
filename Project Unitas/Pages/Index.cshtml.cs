@@ -19,6 +19,18 @@ namespace Project_Unitas.Pages
 
         public IReadOnlyList<ServerStatus> Servers { get; private set; } = [];
 
+        public int CountByState(ServerState state) => Servers.Count(s => s.State == state);
+
+        /// <summary>Average ping of the servers that respond, or null when none do.</summary>
+        public int? AveragePingMs
+        {
+            get
+            {
+                var pings = Servers.Where(s => s.PingMs.HasValue).Select(s => s.PingMs!.Value).ToList();
+                return pings.Count == 0 ? null : (int)Math.Round(pings.Average());
+            }
+        }
+
         public void OnGet()
         {
             FeaturedMachines = catalog.All;
