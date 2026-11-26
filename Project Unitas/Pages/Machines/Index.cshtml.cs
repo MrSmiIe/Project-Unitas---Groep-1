@@ -17,11 +17,12 @@ namespace Project_Unitas.Pages.Machines
 
         public IReadOnlyList<Machine> Machines { get; private set; } = [];
 
-        public IEnumerable<string> Categories => catalog.Categories;
+        public IReadOnlyList<string> Categories { get; private set; } = [];
 
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            Machines = catalog.Search(Query, Category);
+            Machines = await catalog.SearchAsync(Query, Category);
+            Categories = await catalog.GetCategoriesAsync();
         }
     }
 }

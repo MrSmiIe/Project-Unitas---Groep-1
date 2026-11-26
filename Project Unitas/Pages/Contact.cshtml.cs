@@ -1,10 +1,12 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Project_Unitas.Data;
+using Project_Unitas.Models;
 
 namespace Project_Unitas.Pages
 {
-    public class ContactModel : PageModel
+    public class ContactModel(UnitasDbContext db) : PageModel
     {
         public static readonly string[] Subjects =
         [
@@ -26,7 +28,7 @@ namespace Project_Unitas.Pages
             }
         }
 
-        public IActionResult OnPost()
+        public async Task<IActionResult> OnPostAsync()
         {
             // Only accept the subjects from the list (an empty one is already caught by [Required]).
             if (!string.IsNullOrEmpty(Input.Subject) && !Subjects.Contains(Input.Subject))
@@ -39,7 +41,18 @@ namespace Project_Unitas.Pages
                 return Page();
             }
 
-            // TODO: store the message in the database or e-mail it to customer service.
+            db.ContactMessages.Add(new ContactMessage
+            {
+                Name = Input.Name.Trim(),
+                Company = string.IsNullOrWhiteSpace(Input.Company) ? null : Input.Company.Trim(),
+                Email = Input.Email.Trim(),
+                Subject = Input.Subject,
+                Message = Input.Message.Trim(),
+                CreatedAtUtc = DateTime.UtcNow,
+            });
+            await db.SaveChangesAsync();
+
+            // TODO: notify customer service (e-mail) and add a page for staff to read the messages.
             // Don't write the message or personal data to the logs (privacy).
 
             TempData["StatusMessage"] = "Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.";

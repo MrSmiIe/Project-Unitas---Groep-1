@@ -1,4 +1,5 @@
 ﻿@inject CartService Cart
+@inject SignInManager<ApplicationUser> SignInManager
 @{
     var cartCount = Cart.Count;
 }
@@ -49,7 +50,20 @@
                         </button>
                         <ul class="dropdown" id="menu-contact">
                             <li><a asp-area="" asp-page="/Contact">Contact</a></li>
-                            <li><a asp-area="" asp-page="/Account/Login">Mijn account</a></li>
+                            @if (SignInManager.IsSignedIn(User))
+                            {
+                                <li><a asp-area="" asp-page="/Account/Index">Mijn account</a></li>
+                                <li>
+                                    <form method="post" asp-area="" asp-page="/Account/Logout">
+                                        <button class="dropdown__button" type="submit">Uitloggen</button>
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a asp-area="" asp-page="/Account/Login">Inloggen</a></li>
+                                <li><a asp-area="" asp-page="/Account/Register">Registreren</a></li>
+                            }
                         </ul>
                     </li>
                 </ul>
@@ -93,7 +107,7 @@
                     <h2>Klantenservice</h2>
                     <ul>
                         <li><a asp-area="" asp-page="/Contact">Contact</a></li>
-                        <li><a asp-area="" asp-page="/Account/Login">Mijn account</a></li>
+                        <li><a asp-area="" asp-page="/Account/Index">Mijn account</a></li>
                     </ul>
                 </div>
                 <div class="footer-nav__col">

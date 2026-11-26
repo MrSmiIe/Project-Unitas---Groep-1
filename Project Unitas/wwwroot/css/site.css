@@ -575,3 +575,50 @@ h1, h2, h3 {
 .section-gap {
     margin-top: clamp(1.5rem, 4vw, 2.5rem);
 }
+
+/* MFA setup */
+.mfa-steps {
+    display: grid;
+    gap: 1.25rem;
+    margin: 1rem 0 0;
+    padding-left: 1.25rem;
+}
+
+.mfa-qr {
+    display: block;
+    margin: 0.75rem 0;
+    background: #fff;
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    image-rendering: pixelated;
+}
+
+.mfa-key,
+.recovery-codes code {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background: var(--chocolate);
+    color: var(--cream);
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    letter-spacing: 0.05em;
+    word-break: break-all;
+}
+
+.mfa-steps .form {
+    margin-top: 0.75rem;
+}
+
+.recovery-codes {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}

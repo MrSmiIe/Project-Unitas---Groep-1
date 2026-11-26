@@ -12,7 +12,7 @@
     <section class="card">
         <p>Log in op het klantenportaal om te bestellen en uw machines en serviceverzoeken te bekijken.</p>
 
-        <form class="form" method="post">
+        <form class="form" method="post" asp-route-returnUrl="@Model.ReturnUrl">
             <div asp-validation-summary="ModelOnly" class="field-error"></div>
 
             <div class="field">
@@ -27,7 +27,7 @@
                 <span asp-validation-for="Input.Password" class="field-error"></span>
             </div>
 
-            <p class="field-hint">Na het inloggen vragen we om een code uit uw authenticator-app (MFA).</p>
+            <p class="field-hint">Na uw wachtwoord vragen we om een code uit uw authenticator-app (MFA).</p>
 
             <button class="button button--dark" type="submit">Inloggen</button>
         </form>

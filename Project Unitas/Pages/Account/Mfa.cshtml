@@ -1,0 +1,77 @@
+@page
+@model Project_Unitas.Pages.Account.MfaModel
+@{
+    ViewData["Title"] = "Tweestapsverificatie";
+    var recoveryCodes = Model.NewRecoveryCodes?.Split(' ', StringSplitOptions.RemoveEmptyEntries) ?? [];
+}
+
+<div class="page-header">
+    <h1 class="tab-title">Tweestapsverificatie (MFA)</h1>
+</div>
+
+<div class="form-narrow mfa">
+    @if (recoveryCodes.Length > 0)
+    {
+        <section class="card">
+            <h2 class="section-heading">Uw herstelcodes</h2>
+            <p>
+                <strong>Bewaar deze codes nu op een veilige plek</strong> (bijvoorbeeld in een wachtwoordkluis of uitgeprint).
+                Bent u uw telefoon kwijt, dan kunt u met een van deze codes inloggen. Elke code werkt maar één keer.
+                U ziet ze maar één keer.
+            </p>
+            <ul class="recovery-codes">
+                @foreach (var code in recoveryCodes)
+                {
+                    <li><code>@code</code></li>
+                }
+            </ul>
+            <a class="button button--dark" asp-page="/Account/Index">Ik heb ze bewaard, naar mijn account</a>
+        </section>
+    }
+    else if (Model.IsEnabled)
+    {
+        <section class="card">
+            <h2 class="section-heading">Tweestapsverificatie staat aan</h2>
+            <p>Bij het inloggen vragen we naast uw wachtwoord om een code uit uw authenticator-app.</p>
+            <p>U heeft nog <strong>@Model.RecoveryCodesLeft</strong> ongebruikte herstelcodes.</p>
+            <a class="button button--dark" asp-page="/Account/Index">Naar mijn account</a>
+        </section>
+    }
+    else
+    {
+        <section class="card">
+            <p>
+                Voor uw klantaccount is tweestapsverificatie verplicht. Daarmee heeft iemand naast uw
+                wachtwoord ook uw telefoon nodig om in te loggen.
+            </p>
+
+            <ol class="mfa-steps">
+                <li>
+                    Installeer een authenticator-app op uw telefoon, bijvoorbeeld
+                    <strong>Microsoft Authenticator</strong> of <strong>Google Authenticator</strong>.
+                </li>
+                <li>
+                    Scan deze QR-code met de app:
+                    <img class="mfa-qr" src="@Model.QrCodeDataUri" alt="QR-code voor uw authenticator-app" width="200" height="200" />
+                    Lukt scannen niet? Vul dan deze sleutel handmatig in:
+                    <code class="mfa-key">@Model.SharedKey</code>
+                </li>
+                <li>
+                    Vul hieronder de code van 6 cijfers in die de app nu laat zien.
+                    <form class="form" method="post">
+                        <div class="field">
+                            <label asp-for="Code"></label>
+                            <input asp-for="Code" autocomplete="one-time-code" inputmode="numeric" />
+                            <span asp-validation-for="Code" class="field-error"></span>
+                        </div>
+                        <button class="button button--dark" type="submit">Activeren</button>
+                    </form>
+                </li>
+            </ol>
+        </section>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
